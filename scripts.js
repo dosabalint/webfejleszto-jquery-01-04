@@ -1,15 +1,19 @@
-$(function(){
-
+$(function() {
   let $image = $('.image-wrapper img');
 
-  $image.click(function(){
-
-    // előzőről class-t elvenni
-    let $previousImage = $('.image-wrapper img:not(.scale-half)');
-    $previousImage.toggleClass('scale-half');
+  $image.click(function() {
     
-    // újhoz classt hozzárakni
+    // előző
     let $actualImage = $(this);
-    $actualImage.toggleClass('scale-half');
-  })
-})
+    if (!$actualImage.hasClass('scale-half')) {
+      return;
+    }
+
+    // aktuális kép
+    let $previousImage = $('.image-wrapper img:not(.scale-half)');
+
+    // class variálás
+    $previousImage.addClass('scale-half');
+    $actualImage.removeClass('scale-half');
+  });
+});
